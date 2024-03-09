@@ -1,0 +1,23 @@
+/* navbar.css */
+#navbar-extension {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+#navbar-extension a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-size: 18px;
+}
+
+#navbar-extension button {
+  margin: 0 10px;
+}
