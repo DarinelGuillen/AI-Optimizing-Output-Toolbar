@@ -3,7 +3,6 @@
 // Carga dinámica de Tailwind CSS
 const tailwindLink = document.createElement('link');
 tailwindLink.href = chrome.runtime.getURL('../styles/tailwind.css');
-tailwindLink.href = chrome.runtime.getURL('../styles/tailwind.css');
 tailwindLink.type = 'text/css';
 tailwindLink.rel = 'stylesheet';
 document.head.appendChild(tailwindLink);
