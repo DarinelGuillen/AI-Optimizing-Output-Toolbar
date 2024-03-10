@@ -1,10 +1,19 @@
-// navbarActions.js
-document.addEventListener('DOMContentLoaded', (event) => {
-  document.getElementById('btn1').addEventListener('click', function () {
-    alert('Botón 1 presionado');
-  });
+// En navbarActions.js, agrega la lógica para manejar la interacción de los botones
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.svg-button'); // Si tienes múltiples botones
 
-  document.getElementById('btn2').addEventListener('click', function () {
-    alert('Botón 2 presionado');
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      const svg = button.querySelector('.svg-squash');
+
+      // Reinicia la animación
+      svg.classList.remove('animate-svg');
+      setTimeout(() => svg.classList.add('animate-svg'), 0);
+
+      // Toggle del menú desplegable
+      const dropdownMenu = button.closest('.group').querySelector('.dropdown-menu');
+      dropdownMenu.classList.toggle('hidden');
+      alert("Clicked button")
+    });
   });
 });

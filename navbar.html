@@ -1,8 +1,29 @@
 <!-- navbar.html -->
-<div id="navbar-extension" class="fixed top-0 left-0 w-full z-50 bg-green-500 text-white text-center p-4">
-  <div class="text-lg mb-2">Mi Navbar Personalizado</div>
-  <a href="http://certification.googleapps.com/" class="text-white no-underline mx-2 text-lg">G Suite Certification</a>
-  <a href="https://example.com" class="text-white no-underline mx-2 text-lg">Otro Enlace</a>
-  <button id="btn1" class="mx-2 bg-white text-green-500 font-bold py-2 px-4 rounded">Botón 1</button>
-  <button id="btn2" class="mx-2 bg-white text-green-500 font-bold py-2 px-4 rounded">Botón 2</button>
+<div id="navbar-extension" class="fixed top-0 left-0 w-full h-20 z-50 p-1 flex">
+  <!-- Parte izquierda (25% de la pantalla) -->
+  <div class="w-1/4 h-full bg-white flex items-center justify-center">
+    <!-- Contenido izquierdo -->
+  </div>
+
+  <!-- Parte derecha ajustada para contener el desplazamiento, con overflow-x-auto -->
+  <div class="w-3/4 h-full flex items-center justify-center">
+    <div class="flex space-x-4 justify-around overflow-x-auto custom-scrollbar w-[60%] h-10  p-1 rounded-lg shadow-lg">
+
+      <!-- Contenido centrado en la mitad derecha -->
+      <div class="relative group">
+        <button class=" focus:outline-none rounded-full gap-x-1 p-1 flex items-center justify-center svg-button">
+          <span>Dev</span>
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 svg-squash" viewBox="0 0 20 20" stroke="currentColor" fill="none" stroke-width="1.5">
+            <circle cx="10" cy="10" r="4"/>
+          </svg>
+        </button>
+        <ul class="dropdown-menu fixed hidden w-40 rounded-md shadow-lg mt-1.5 z-200">
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Opción 1</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Opción 2</a></li>
+          <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Opción 3</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
 </div>

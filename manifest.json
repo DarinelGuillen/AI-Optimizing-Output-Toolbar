@@ -18,14 +18,15 @@
   ],
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],  
+      "matches": ["<all_urls>"],
       "js": ["scripts/contentScript.js"]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["styles/navbar.css", "navbar.html", "scripts/navbarActions.js"],
+      "resources": ["styles/navbar.css", "navbar.html", "scripts/navbarActions.js", "styles/tailwind.css"],
       "matches": ["<all_urls>"]
     }
   ]
+
 }
