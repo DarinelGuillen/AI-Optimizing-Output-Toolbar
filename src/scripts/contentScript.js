@@ -2,7 +2,8 @@
 
 // Carga dinámica de Tailwind CSS
 const tailwindLink = document.createElement('link');
-tailwindLink.href = chrome.runtime.getURL('styles/tailwind.css');
+tailwindLink.href = chrome.runtime.getURL('../styles/tailwind.css');
+tailwindLink.href = chrome.runtime.getURL('../styles/tailwind.css');
 tailwindLink.type = 'text/css';
 tailwindLink.rel = 'stylesheet';
 document.head.appendChild(tailwindLink);
@@ -17,6 +18,6 @@ fetch(chrome.runtime.getURL('navbar.html'))
 
   // Carga dinámica de JS
   const script = document.createElement('script');
-  script.src = chrome.runtime.getURL('scripts/navbarActions.js');
+  script.src = chrome.runtime.getURL('./navbarActions.js');
   document.body.appendChild(script);
 });

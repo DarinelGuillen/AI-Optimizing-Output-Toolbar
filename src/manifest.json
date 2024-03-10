@@ -4,11 +4,11 @@
   "description": "Provides a quick link to the G Suite Certification website",
   "version": "1.1",
   "icons": {
-    "128": "img/sushi.png"
+    "128": "sushi.png"
   },
   "action": {
-    "default_icon": "img/sushi.png",
-    "default_popup": "popup.html",
+    "default_icon": "sushi.png",
+    "default_popup": "./popup/popup.html",
     "default_title": "G Suite Certification"
   },
   "permissions": [
@@ -19,14 +19,15 @@
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
-      "js": ["scripts/contentScript.js"]
+      "js": ["./scripts/contentScript.js"]
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["styles/navbar.css", "navbar.html", "scripts/navbarActions.js", "styles/tailwind.css"],
+      "resources": ["styles/navbar.css", "./main/navbar.html", "scripts/navbarActions.js", "styles/tailwind.css"],
       "matches": ["<all_urls>"]
     }
   ]
+
 
 }

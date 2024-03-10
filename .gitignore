@@ -1,1 +1,21 @@
-.node_modules
+# Ignore node_modules directory
+node_modules/
+
+# Ignore any files generated during development
+*.log
+npm-debug.log*
+
+# Ignore any compiled output or binaries
+dist/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Ignore any files specific to your editor or IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
