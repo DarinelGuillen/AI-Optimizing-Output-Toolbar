@@ -1,7 +1,5 @@
-// En navbarActions.js
 window.addEventListener('load', () => {
   const buttons = document.querySelectorAll('.svg-button');
-  console.log('Botones encontrados: ', buttons.length);
 
   document.addEventListener('click', (event) => {
     const dropdownMenus = document.querySelectorAll('.dropdown-menu');
@@ -22,15 +20,11 @@ window.addEventListener('load', () => {
   buttons.forEach(button => {
     button.addEventListener('click', (event) => {
       event.stopPropagation();
-      console.log('Clic en botón');
 
       const svg = button.querySelector('.svg-squash');
       if (svg) {
-        // Remover la clase animate-svg y luego agregarla nuevamente con un retraso
         svg.classList.remove('animate-svg');
-        // Forzar reflow/repaint
         void svg.offsetWidth;
-        // Agregar un ligero retraso antes de reasignar la clase puede ayudar en ciertos navegadores
         setTimeout(() => {
           svg.classList.add('animate-svg');
         }, 10);
@@ -39,8 +33,31 @@ window.addEventListener('load', () => {
       const dropdownMenu = button.closest('.group').querySelector('.dropdown-menu');
       if (dropdownMenu) {
         dropdownMenu.classList.toggle('hidden');
-        console.log(dropdownMenu.classList.contains('hidden') ? 'Ocultando menú' : 'Mostrando menú');
       }
+    });
+  });
+
+   // Agregar funcionalidad a cada opción del menú desplegable
+  const menuOptions = document.querySelectorAll('.dropdown-menu li a');
+  menuOptions.forEach((option, index) => {
+    option.addEventListener('click', (event) => {
+      event.preventDefault(); // Prevenir la navegación.
+
+      // Encuentra el textarea donde se insertará el texto.
+      const textarea = document.getElementById('prompt-textarea');
+      if (!textarea) {
+        console.warn('Textarea no encontrado');
+        return;
+      }
+
+      // Agrega el texto correspondiente al botón clickeado al final del contenido actual del textarea.
+      const existingText = textarea.value;
+      const buttonText = `Click en botón ${index + 1}`;
+      textarea.value = existingText + (existingText ? "\n" : "") + buttonText;
+
+      // Asegúrate de que el textarea se ajuste al nuevo contenido, en caso de que su altura sea dinámica.
+      textarea.style.height = 'auto';
+      textarea.style.height = textarea.scrollHeight + 'px';
     });
   });
 });
