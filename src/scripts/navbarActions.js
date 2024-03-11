@@ -1,41 +1,46 @@
 // En navbarActions.js
 window.addEventListener('load', () => {
   const buttons = document.querySelectorAll('.svg-button');
-  console.log('Load event, botones encontrados:', buttons.length); // Log para depurar
+  console.log('Botones encontrados: ', buttons.length);
 
-  if (buttons.length === 0) {
-    console.warn('No se encontraron botones con la clase .svg-button');
-  }
+  document.addEventListener('click', (event) => {
+    const dropdownMenus = document.querySelectorAll('.dropdown-menu');
+    let targetElement = event.target;
+
+    do {
+      if (targetElement == document) break;
+      dropdownMenus.forEach(menu => {
+        if (menu === targetElement || buttons[0] === targetElement) {
+          return;
+        }
+      });
+      dropdownMenus.forEach(menu => menu.classList.add('hidden'));
+      break;
+    } while (targetElement = targetElement.parentNode);
+  });
 
   buttons.forEach(button => {
     button.addEventListener('click', (event) => {
-      event.preventDefault(); // Previene el comportamiento por defecto si es necesario
-      console.log('Botón clickeado'); // Log para depurar
+      event.stopPropagation();
+      console.log('Clic en botón');
 
       const svg = button.querySelector('.svg-squash');
-      if (!svg) {
-        console.warn('No se encontró SVG con la clase .svg-squash dentro del botón');
-        return; // Detiene la ejecución si no hay SVG
+      if (svg) {
+        // Remover la clase animate-svg y luego agregarla nuevamente con un retraso
+        svg.classList.remove('animate-svg');
+        // Forzar reflow/repaint
+        void svg.offsetWidth;
+        // Agregar un ligero retraso antes de reasignar la clase puede ayudar en ciertos navegadores
+        setTimeout(() => {
+          svg.classList.add('animate-svg');
+        }, 10);
       }
 
-      console.log('SVG antes de animación:', svg); // Log para depurar
-
-      // Reinicia la animación
-      svg.classList.remove('animate-svg');
-      void svg.offsetWidth;
-      svg.classList.add('animate-svg');
-
-      console.log('SVG después de animación:', svg); // Log para depurar
-
-      // Toggle del menú desplegable
       const dropdownMenu = button.closest('.group').querySelector('.dropdown-menu');
-      if (!dropdownMenu) {
-        console.warn('No se encontró menú desplegable con la clase .dropdown-menu');
-        return; // Detiene la ejecución si no hay menú desplegable
+      if (dropdownMenu) {
+        dropdownMenu.classList.toggle('hidden');
+        console.log(dropdownMenu.classList.contains('hidden') ? 'Ocultando menú' : 'Mostrando menú');
       }
-
-      dropdownMenu.classList.toggle('hidden');
-      console.log(dropdownMenu.classList.contains('hidden') ? 'Menú desplegable ocultado' : 'Menú desplegable mostrado'); // Log para depurar
     });
   });
 });

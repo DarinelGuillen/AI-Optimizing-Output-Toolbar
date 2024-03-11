@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* En tu archivo navbar.css */
+/* Estilos personalizados */
 .navbar-ex {
   width: 60%;
   position: fixed;
@@ -15,96 +15,41 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-
 }
-.hidden {
-  display: none;
-}
-
 
 .navbar_menu {
   background-color: #20504F;
   width: 100%;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  /* Añade una transición para la sombra y la transformación */
 }
 
-.navbar_menu:hover {
+/* .navbar_menu:hover {
   box-shadow: 0 4px 6px -1px rgba(147, 147, 147, 0.1),
-    0 2px 4px -1px rgba(132, 132, 132, 0.05);
-  /* Esta sombra se aplicará en hover */
+              0 2px 4px -1px rgba(132, 132, 132, 0.05);
   transform: translateY(-5px);
-  /* Añade un ligero movimiento hacia arriba */
-}
-
-/* Media query para pantallas de menos de 1024 píxeles de ancho */
-@media (max-width: 1023px) {
-  .navbar-ex {
-    display: none;
-  }
-}
-
-/* Media query para pantallas de 1024 píxeles de ancho y más */
-@media (min-width: 1024px) {
-  .navbar-ex {
-    display: flex;
-  }
-}
+} */
 
 .dropdown-menu {
   background-color: #2B3A42;
+  transition: opacity 0.3s ease;
 }
 
 .svg-button {
   background-color: #38B2AC;
-  /* background-color: #ff0000; */
 }
 
-
-
 @keyframes squash-and-bounce {
-
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  30% {
-    transform: scale(1.3, 0.7);
-  }
-
-  40%,
-  60% {
-    transform: scale(0.9, 1.1);
-  }
-
-  70% {
-    transform: scale(1.05, 0.95);
-  }
-
-  80%,
-  90% {
-    transform: scale(1, 1);
-  }
+  0%, 100% { transform: scale(1); }
+  30% { transform: scale(1.3, 0.7); }
+  40%, 60% { transform: scale(0.9, 1.1); }
+  70% { transform: scale(1.05, 0.95); }
+  80%, 90% { transform: scale(1, 1); }
 }
 
 .animate-svg {
   animation: squash-and-bounce 0.5s ease forwards;
 }
 
-.custom-scrollbar::-webkit-scrollbar {
-  height: 2px;
-}
-
-.custom-scrollbar::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(162, 160, 160, 0.37);
-  border-radius: .5rem;
-}
-
-.custom-scrollbar {
-  overflow-y: hidden;
+.hidden {
+  display: none;
 }
