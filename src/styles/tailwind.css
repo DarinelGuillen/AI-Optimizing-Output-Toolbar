@@ -4,30 +4,39 @@
 
 /* Estilos personalizados */
 .navbar-ex {
-  width: 60%;
+  /* width: 60%; Quitar esta línea o ajustar a min-width si deseas una anchura mínima */
+    /* max-width: 60%; */
+    /* padding: 10px; */
+    width: 60%;
   position: fixed;
   top: 0;
   right: 6%;
   padding-top: 8px;
-  height: auto;
+  
   z-index: 50;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  /* background-color: transparent; */
+    background-color: red;
 }
 
 .navbar_menu {
   background-color: #20504F;
-  width: 100%;
+  /* width: 100%; Quitar esta línea */
+    max-width: auto;
+    /* Cambiar width a max-width */
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  display: flex;
+    left: 0;
+    /* Cambiar display a flex */
 }
 
-/* .navbar_menu:hover {
+.navbar_menu:hover {
   box-shadow: 0 4px 6px -1px rgba(147, 147, 147, 0.1),
               0 2px 4px -1px rgba(132, 132, 132, 0.05);
-  transform: translateY(-5px);
-} */
+  /* transform: translateY(-5px); */
+  }
 
 .dropdown-menu {
   background-color: #2B3A42;
@@ -52,4 +61,21 @@
 
 .hidden {
   display: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  height: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(162, 160, 160, 0.37);
+  border-radius: .5rem;
+}
+
+.custom-scrollbar {
+  overflow-y: hidden;
 }

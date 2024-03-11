@@ -40,7 +40,15 @@ const data = [
       { "name": "option7", "value": "Valor para button3, opción 7" },
       { "name": "option8", "value": "Valor para button3, opción 8" }
     ]
+  },{
+    "id": 1,
+    "nombre": "dev",
+    "opciones": [
+      { "name": "option1", "value": "Ejemplo de valor a insertar en text area" },
+      { "name": "option2", "value": "Insertado en text area" }
+    ]
   }
+
 ];
 
 window.addEventListener('load', () => {
