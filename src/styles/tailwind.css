@@ -17,6 +17,10 @@
   background-color: transparent;
 
 }
+.hidden {
+  display: none;
+}
+
 
 .navbar_menu {
   background-color: #20504F;
