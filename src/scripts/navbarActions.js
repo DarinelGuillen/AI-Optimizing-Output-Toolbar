@@ -57,7 +57,11 @@ window.addEventListener('load', () => {
   let optionCounter = 1; // Contador global para las opciones clickeadas
   // Seleccionar el botón existente que contiene el SVG
   const flipButton = document.getElementById('svg-flip-button');
+  const textarea = document.getElementById('prompt-textarea');
 
+  if (textarea && textarea.value === '') {
+    textarea.value = introductionText;
+  }
 
   flipButton.addEventListener('click', () => {
     const svg = flipButton.querySelector('.flip-svg');
@@ -76,7 +80,7 @@ window.addEventListener('load', () => {
         menu.classList.add('hidden');
       });
     }
-  });
+  }, true);
 
 
   data.forEach((item, index) => {
@@ -134,9 +138,8 @@ window.addEventListener('load', () => {
   document.querySelectorAll('.dropdown-menu li a').forEach((option) => {
     option.addEventListener('click', (event) => {
       event.preventDefault();
-      const textarea = document.getElementById('prompt-textarea');
 
-      // Revisa si el textarea existe
+      // Verifica si el textarea existe
       if (!textarea) {
         console.warn('Textarea no encontrado');
         return;
@@ -144,19 +147,19 @@ window.addEventListener('load', () => {
 
       // Agrega la opción clickeada al textarea
       const valueToInsert = option.dataset.value;
-      if (!textarea.value.includes(valueToInsert)) { // Verifica que la opción no haya sido ya agregada
-        textarea.value += `${optionCounter++}) ${valueToInsert}\n`;
+      if (!textarea.value.includes(`${valueToInsert}\n`)) { // Verifica que la opción no haya sido ya agregada
+        const numberedOption = `${optionCounter}) ${valueToInsert}\n`;
+        // Agrega la opción con un número en el orden de clickeo
+        textarea.value = textarea.value.includes(introductionText) ? textarea.value + numberedOption : introductionText + numberedOption;
+        optionCounter++; // Incrementa el contador solo después de añadir una nueva opción
       }
+
+      // Cierra el menú desplegable después de seleccionar una opción
+      document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.add('hidden'));
 
       // Ajusta la altura del textarea
       textarea.style.height = 'auto';
       textarea.style.height = `${textarea.scrollHeight}px`;
-
-      // Cierra el menú desplegable después de seleccionar una opción
-      const dropdownMenu = option.closest('.dropdown-menu');
-      if (dropdownMenu) {
-        dropdownMenu.classList.add('hidden');
-      }
     });
   });
 });
