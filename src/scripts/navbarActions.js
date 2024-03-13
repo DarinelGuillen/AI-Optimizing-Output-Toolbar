@@ -41,7 +41,7 @@ const data = [
       { "name": "option8", "value": "Valor para button3, opción 8" }
     ]
   },{
-    "id": 1,
+    "id": 5,
     "nombre": "dev",
     "opciones": [
       { "name": "option1", "value": "Ejemplo de valor a insertar en text area" },
@@ -53,6 +53,31 @@ const data = [
 
 window.addEventListener('load', () => {
   const navbarMenu = document.querySelector('.navbar_menu');
+  const introductionText = 'Can you please produce an output with the following guidelines:\n';
+  let optionCounter = 1; // Contador global para las opciones clickeadas
+  // Seleccionar el botón existente que contiene el SVG
+  const flipButton = document.getElementById('svg-flip-button');
+
+
+  flipButton.addEventListener('click', () => {
+    const svg = flipButton.querySelector('.flip-svg');
+    svg.classList.add('flip-animate');
+
+    console.log('Flip animation triggered');
+
+    setTimeout(() => {
+      svg.classList.remove('flip-animate');
+    }, 600);
+  });
+
+  window.addEventListener('click', (event) => {
+    if (!event.target.matches('.svg-button, .svg-button *')) {
+      document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.classList.add('hidden');
+      });
+    }
+  });
+
 
   data.forEach((item, index) => {
     const groupDiv = document.createElement('div');
@@ -106,18 +131,32 @@ window.addEventListener('load', () => {
   });
 
   // Lógica para manejar clics en opciones del menú, sin cambios
-  document.querySelectorAll('.dropdown-menu li a').forEach(option => {
-    option.addEventListener('click', event => {
+  document.querySelectorAll('.dropdown-menu li a').forEach((option) => {
+    option.addEventListener('click', (event) => {
       event.preventDefault();
       const textarea = document.getElementById('prompt-textarea');
+
+      // Revisa si el textarea existe
       if (!textarea) {
         console.warn('Textarea no encontrado');
         return;
       }
+
+      // Agrega la opción clickeada al textarea
       const valueToInsert = option.dataset.value;
-      textarea.value += (textarea.value ? "\n" : "") + valueToInsert;
+      if (!textarea.value.includes(valueToInsert)) { // Verifica que la opción no haya sido ya agregada
+        textarea.value += `${optionCounter++}) ${valueToInsert}\n`;
+      }
+
+      // Ajusta la altura del textarea
       textarea.style.height = 'auto';
-      textarea.style.height = textarea.scrollHeight + 'px';
+      textarea.style.height = `${textarea.scrollHeight}px`;
+
+      // Cierra el menú desplegable después de seleccionar una opción
+      const dropdownMenu = option.closest('.dropdown-menu');
+      if (dropdownMenu) {
+        dropdownMenu.classList.add('hidden');
+      }
     });
   });
 });

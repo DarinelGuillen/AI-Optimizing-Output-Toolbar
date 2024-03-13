@@ -1,0 +1,10 @@
+/* Estilos para el SVG */
+#svg-flip-container {
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+/* Animación de flip */
+.flip {
+  transform: rotateY(180deg);
+}

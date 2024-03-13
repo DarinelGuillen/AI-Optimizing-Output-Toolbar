@@ -24,7 +24,14 @@
   ],
   "web_accessible_resources": [
     {
-      "resources": ["styles/navbar.css", "main/navbar.html", "scripts/navbarActions.js", "styles/tailwind.css", "data/data.js"],
+      "resources": [
+        "assets/navbar.css",
+        "main/navbar.html",
+        "scripts/navbarActions.js",
+        "scripts/flipActions.js",
+        "assets/tailwind.css",
+        "data/data.js"
+      ],
       "matches": ["<all_urls>"]
     }
   ]
