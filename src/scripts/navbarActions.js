@@ -120,12 +120,15 @@ window.addEventListener('load', () => {
         return;
       }
 
+      // Agrega la opción clickeada al textarea
       const valueToInsert = option.dataset.value;
-      if (!textarea.value.includes(`${valueToInsert}\n`)) {
+      const currentValue = textarea.value.trim(); // Remove leading and trailing whitespace
+      if (!currentValue.includes(valueToInsert)) { // Check if the value already exists in the textarea
         const numberedOption = `${optionCounter}) ${valueToInsert}\n`;
-        textarea.value = textarea.value.includes(introductionText) ? textarea.value + numberedOption : introductionText + numberedOption;
-        optionCounter++;
+        textarea.value = currentValue === introductionText ? numberedOption : currentValue + numberedOption;
+        optionCounter++; // Increment the counter only after adding a new option
       }
+
 
       document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.add('hidden'));
       textarea.style.height = 'auto';
